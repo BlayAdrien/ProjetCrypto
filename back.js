@@ -5,7 +5,7 @@ var mysql = require('mysql')
 var con = mysql.createConnection({
     host:'localhost',
     user:'root',
-    password:'test',
+    password:'',
     database: 'crypto',
 })
 
@@ -32,6 +32,14 @@ app.get('/crypto/:cryptoId', function (req,res,next){
     })
 })
 
+app.post('/crypto',function(req,res, next){
+    let laDate = new Date()
+    con.query("INSERT INTO transactions (`ID_TRANSACTIONS`, `ID_UTILISATEUR`, `ID_CRYPTO`, `ACHATOUVENTE`, `DATE`, `NOMBRES_CRYPTOS`) VALUES (NULL, '1', '"+ req.body.cryptochoix + "' , "+ req.body.transaction+"', '" + laDate.getFullYear() + "-" + laDate.getMonth() + "-" + laDate.getDay() + "', '"+ req.body.nombre + "' )", function(err, result){
+        if(err) throw err;
+
+        res.json(result)
+    })
+})
 
 
 var server = http.createServer(app)

@@ -3,13 +3,23 @@ var rootURL = "http://localhost:3000/crypto";
 var currenturl;
 
 findAll();
+$('#insert').on("click", function (){
+    addTransaction();
+})
 
 
-/*
-$('#btnCrypto').click( function () {
-    console.log('testS')
-    console.log($('#crypto').val());
-});*/
+
+function addTransaction() {
+    $.ajax({
+        type:'POST',
+        url: rootURL,
+        dataType: "json",
+        data: formToJSON(),
+        success: function (data, textStatus, jqXHR){
+            alert('Cest inséré la veine');
+        }
+    })
+}
 
 
 function findAll() {
@@ -24,6 +34,8 @@ function findAll() {
     .done(function(data){
         for (var i=0; i< data.length; i++){
             $('#crypto-select').append('<option value=' + data[i].ID_CRYPTO + '>'+ data[i].NOM_CRYPTO + '</option>');
+            $('#cryptochoix').append('<option value=' + data[i].ID_CRYPTO + '>'+ data[i].NOM_CRYPTO + '</option>');
+
         }
     })
     $("#crypto-select").change(function(){
@@ -33,23 +45,16 @@ function findAll() {
             dataType: "json",
         })
         .done(function(data){
+            $('#result').html("");
             $('#result').append('<p> Vous avez : ' + data[0].nbCrypto + '</p>');
-        })
-    //var str = "";
-
-//   $("#crypto-select option:selected").each(function () {
-//         str += $(this).text() + " ";
-//       });
-//   $("#result").text(str);
-// })
-// .trigger('change');
-
-    
-    
+        })    
     })
 }
 
-$("#btnCrypto").click(function () {
-    console.log('testS')
-    console.log($('#crypto').value());
-})
+function formToJSON() {
+    return JSON.stringify({
+        "cryptochoix": $('#cryptochoix').val(),
+        "transaction": $('#transaction').val(),
+        "nombre": $('#nombre').val()
+    });
+}

@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <h1>CryptoWallet</h1>
+    <h1>CryptoWllet</h1>
 
     <label for="crypto-select">Choisissez une Crypto:</label>
 
@@ -19,8 +19,27 @@
         
     </select>
     <div id="result"></div>
+    <br>
+    <br>
+
+    <section id="transaction">
+        <form id="transacForm">
+            <p>Je souhaite : </p>
+            <input type="radio" id="acheter" name="transaction" value="0">
+            <label for="acheter">Acheter</label><br>
+            <input type="radio" id="vendre" name="transaction" value="1">
+            <label for="vendre">Vendre</label><br>
+            <input type="number" min="0" name="nombre">
+            <button id="insert" >GO</button>
+
+            <select name="cryptochoix" id="cryptochoix">
+            <option value="">--Please choose an option--</option>
+            <br>
+        </form>
+        <br>
 
 
+    </section>
 
     <script src="../js/main.js"></script>
 
