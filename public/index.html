@@ -5,41 +5,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoWallet</title>
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
-<body>
-    <h1>CryptoWllet</h1>
+<body class="home">
+    <header id="head">
+		<div class="container">
+			<div class="row">
+				<h1 class="lead">CryptoWallet</h1>
+			</div>
+		</div>
+	</header>
 
-    <label for="crypto-select">Choisissez une Crypto:</label>
-
-    <select name="crypto" id="crypto-select">
-        <option value="">--Please choose an option--</option>
-        
-    </select>
-    <div id="result"></div>
-    <br>
-    <br>
-
-    <section id="transaction">
-        <form id="transacForm">
-            <p>Je souhaite : </p>
-            <input type="radio" id="acheter" name="transaction" value="0">
-            <label for="acheter">Acheter</label><br>
-            <input type="radio" id="vendre" name="transaction" value="1">
-            <label for="vendre">Vendre</label><br>
-            <input type="number" min="0" name="nombre">
-            <button id="insert" >GO</button>
-
-            <select name="cryptochoix" id="cryptochoix">
-            <option value="">--Please choose an option--</option>
-            <br>
-        </form>
+    <!-- Partie blanche -->
+	<div class="container text-center">
+		<br> <br>
+		<h2 class="thin"> Combien de crypto je possède ? </h2>
         <br>
+		<p class="text-muted"> </p>
+        <label for="crypto-select">Choisissez une Crypto:</label>
+
+        <select name="crypto" id="crypto-select">
+        <option value="">--Please choose an option--</option>  
+        </select>
+        <div id="result"></div>
+	</div>
+
+    <!-- Partie Grise  -->
+	<div class="jumbotron top-space">
+		<div class="container">
+			<h3 class="text-center thin">Acheter ou vendre des cryptos : </h3>	
+            <section>
+                <form>
+                    <p>Je souhaite : </p>
+                    <div id="flexPosition">
+                        <div class="flexAchat">
+                            <div id="flexRadioAchat">
+                                <input type="radio" class="achat">
+                                <label for="achat">Acheter</label><br>
+                            </div>
+                            <label for="nombre">Nombre de crypto achetées</label>
+                            <input type="number" min="0" name="NOMBRES_CRYPTOS" class="NOMBRES_CRYPTOS">
+                            <label for="prix"> Prix d'achat</label>
+                            <input type="number" min="0" name="prixCrypto" class="prixCrypto">
+                            <select name="cryptochoix" class="cryptochoix" id="marge">
+                                <option value="">--Please choose an option--</option>
+                                <br>
+                            </select>
+                            <button class="insert" >GO</button>
+                        </div>
 
 
-    </section>
+                        <div class="flexAchat">
+                            <div class="flexRadioAchat">
+                                <input type="radio" class="vente">
+                                <label for="vente">Vente</label><br>
+                            </div>
+                            <select name="ID_TRANSACTIONS" id="ID_TRANSACTIONS" class="marge">
+                                <option value="">--Please choose an option--</option>
+                                <br>
+                            </select>
+                            <button id="suppr" >GO</button>
+                        </div>
+                    </div>
+                </form>
+            </section>	
+		</div>
+	</div>
+
+
+	<!-- Partie blanche 2 -->
+	<div class="container">
+		<h2 class="text-center top-space">Afficher toutes mes transactions : </h2>
+		<br>
+        <div class="divflex">
+            <div class="droit">
+                <p> Crypto ID = 1 : Bitcoin </p>
+                <p> Crypto ID = 2 : Ethereum </p>
+                <p> Crypto ID = 3 : LiteCoin </p>
+                <p> Crypto ID = 4 : PolkaDot </p>
+            </div>
+            <div class="gauche">
+                <label for="affichage">Transactions réalisées : </label>
+                <div id="affichage"></div>
+            </div>
+        </div>
+        
+    </div>	
+
+
+    <div class="jumbotron top-space">
+		<div class="container">
+			<h3 class="text-center thin">Voir l'evolution de mes cryptos : </h3>	
+            <canvas id="myChart" width="400" height="400"></canvas>
+		</div>
+	</div>
+    
+
+    <footer id="footer" class="top-space">
+		<div class="footer1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Contact</h3>
+						<div class="widget-body">
+							<p> BIBAL Nicolas </p>
+                            <p> GRAND Lucas </p>
+                            <p> BLAY Adrien </p>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>	
+
+
+
+
 
     <script src="../js/main.js"></script>
 
